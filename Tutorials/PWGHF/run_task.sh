@@ -38,7 +38,7 @@ OPTIONS_GLOBAL=(
   --aod-memory-rate-limit 2000000000
   --shm-segment-size 16000000000
   --resources-monitoring 2
-  --aod-parent-base-path-replacement "old-path-to-parent;new-path-to-parent"
+  --aod-parent-base-path-replacement "/home/vkucera/hfo2-tutorial_5/;"
   --aod-parent-access-level 1
   --aod-file "@input_task.txt"
   --min-failure-level error

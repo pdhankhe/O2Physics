@@ -51,6 +51,7 @@ using namespace o2::framework;
 
 /// Struct for applying D0 selection cuts
 struct HfCandidateSelectorD0 {
+  
   Produces<aod::HfSelD0> hfSelD0Candidate;
   Produces<aod::HfMlD0> hfMlD0Candidate;
 

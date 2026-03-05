@@ -27,20 +27,25 @@ using namespace o2::framework;
 struct myExampleTask {
   // Histogram registry: an object to hold your histograms
   HistogramRegistry histos{"histos", {}, OutputObjHandlingPolicy::AnalysisObject};
+  Configurable<int> nbinsPt{"nbinsPt", 100, "Number of bins in pT histogram"};
+  Configurable<int> nbinsEta{"nbinsEta", 30, "Number of bins in eta histogram"};
 
   void init(InitContext const&)
   {
     // define axes you want to use
-    const AxisSpec axisEta{30, -1.5, +1.5, "#eta"};
+    const AxisSpec axisEta{nbinsEta, -1.5, +1.5, "#eta"};
+    const AxisSpec axisPt{nbinsPt, 0, 20, "p_{T} (GeV/c)"};
 
     // create histograms
     histos.add("etaHistogram", "etaHistogram", kTH1F, {axisEta});
+    histos.add("ptHistogram", "ptHistogram", kTH1F, {axisPt});
   }
 
   void process(aod::TracksIU const& tracks)
   {
     for (auto& track : tracks) {
       histos.fill(HIST("etaHistogram"), track.eta());
+      histos.fill(HIST("ptHistogram"),track.pt());
     }
   }
 };
