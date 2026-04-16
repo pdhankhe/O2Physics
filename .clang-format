@@ -2,6 +2,9 @@ BasedOnStyle: Google
 AccessModifierOffset: -1
 AlignEscapedNewlinesLeft: true
 AlignTrailingComments: true
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignConsecutiveMacros: true
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortFunctionsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: false
