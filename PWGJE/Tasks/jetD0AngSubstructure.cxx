@@ -57,68 +57,69 @@ namespace o2::aod
 namespace exp
 {
 // Jet-related quantities
-DECLARE_SOA_COLUMN(JetHfDist, jetHfDist, float);
-DECLARE_SOA_COLUMN(JetPt, jetPt, float);
-DECLARE_SOA_COLUMN(JetEta, jetEta, float);
-DECLARE_SOA_COLUMN(JetPhi, jetPhi, float);
-DECLARE_SOA_COLUMN(JetNConst, jetNConst, int);
-DECLARE_SOA_COLUMN(JetAng, jetAng, float);
+DECLARE_SOA_COLUMN(JetHfDist, expJetHfDist, float);
+DECLARE_SOA_COLUMN(JetPt, expJetPt, float);
+DECLARE_SOA_COLUMN(JetEta, expJetEta, float);
+DECLARE_SOA_COLUMN(JetPhi, expJetPhi, float);
+DECLARE_SOA_COLUMN(JetNConst, expJetNConst, int);
+DECLARE_SOA_COLUMN(JetAng, expJetAng, float);
 // D0 candidate quantities
-DECLARE_SOA_COLUMN(HfPt, hfPt, float);
-DECLARE_SOA_COLUMN(HfEta, hfEta, float);
-DECLARE_SOA_COLUMN(HfPhi, hfPhi, float);
-DECLARE_SOA_COLUMN(HfMass, hfMass, float);
-DECLARE_SOA_COLUMN(HfY, hfY, float);
+DECLARE_SOA_COLUMN(HfPt, expHfPt, float);
+DECLARE_SOA_COLUMN(HfEta, expHfEta, float);
+DECLARE_SOA_COLUMN(HfPhi, expHfPhi, float);
+DECLARE_SOA_COLUMN(HfMass, expHfMass, float);
+DECLARE_SOA_COLUMN(HfY, expHfY, float);
 // ML scores
-DECLARE_SOA_COLUMN(HfMlScore0, hfMlScore0, float);
-DECLARE_SOA_COLUMN(HfMlScore1, hfMlScore1, float);
-DECLARE_SOA_COLUMN(HfMlScore2, hfMlScore2, float);
+DECLARE_SOA_COLUMN(HfMlScore0, expHfMlScore0, float);
+DECLARE_SOA_COLUMN(HfMlScore1, expHfMlScore1, float);
+DECLARE_SOA_COLUMN(HfMlScore2, expHfMlScore2, float);
 } // namespace exp
 namespace mcp
 {
 // MCP quantities (Particle Level)
 // Jets
-DECLARE_SOA_COLUMN(JetHfDist, jetHfDist, float);
-DECLARE_SOA_COLUMN(JetPt, jetPt, float);
-DECLARE_SOA_COLUMN(JetEta, jetEta, float);
-DECLARE_SOA_COLUMN(JetPhi, jetPhi, float);
-DECLARE_SOA_COLUMN(JetNConst, jetNConst, float);
-DECLARE_SOA_COLUMN(JetAng, jetAng, float);
+DECLARE_SOA_COLUMN(JetHfDist, mcpJetHfDist, float);
+DECLARE_SOA_COLUMN(JetPt, mcpJetPt, float);
+DECLARE_SOA_COLUMN(JetEta, mcpJetEta, float);
+DECLARE_SOA_COLUMN(JetPhi, mcpJetPhi, float);
+DECLARE_SOA_COLUMN(JetNConst, mcpJetNConst, float);
+DECLARE_SOA_COLUMN(JetAng, mcpJetAng, float);
 // D0 candidates (Heavy Flavour)
-DECLARE_SOA_COLUMN(HfPt, hfPt, float);
-DECLARE_SOA_COLUMN(HfEta, hfEta, float);
-DECLARE_SOA_COLUMN(HfPhi, hfPhi, float);
-// DECLARE_SOA_COLUMN(HfMass, hfMass, float);
-DECLARE_SOA_COLUMN(HfY, hfY, float);
-DECLARE_SOA_COLUMN(HfPrompt, hfPrompt, bool);
-DECLARE_SOA_COLUMN(HfMatch, hfMatch, bool);
+DECLARE_SOA_COLUMN(HfPt, mcpHfPt, float);
+DECLARE_SOA_COLUMN(HfEta, mcpHfEta, float);
+DECLARE_SOA_COLUMN(HfPhi, mcpHfPhi, float);
+// DECLARE_SOA_COLUMN(HfMass, mcpHfMass, float);
+DECLARE_SOA_COLUMN(HfY, mcpHfY, float);
+DECLARE_SOA_COLUMN(HfPrompt, mcpHfPrompt, bool);
+DECLARE_SOA_COLUMN(HfMatch, mcpHfMatch, bool);
 
 } // namespace mcp
+
 namespace mcd
 {
 // MCD quantities (Detector Level)
 // Jets
-DECLARE_SOA_COLUMN(JetHfDist, jetHfDist, float);
-DECLARE_SOA_COLUMN(JetPt, jetPt, float);
-DECLARE_SOA_COLUMN(JetEta, jetEta, float);
-DECLARE_SOA_COLUMN(JetPhi, jetPhi, float);
-DECLARE_SOA_COLUMN(JetNConst, jetNConst, float);
-DECLARE_SOA_COLUMN(JetAng, jetAng, float);
+DECLARE_SOA_COLUMN(JetHfDist, mcdJetHfDist, float);
+DECLARE_SOA_COLUMN(JetPt, mcdJetPt, float);
+DECLARE_SOA_COLUMN(JetEta, mcdJetEta, float);
+DECLARE_SOA_COLUMN(JetPhi, mcdJetPhi, float);
+DECLARE_SOA_COLUMN(JetNConst, mcdJetNConst, float);
+DECLARE_SOA_COLUMN(JetAng, mcdJetAng, float);
 // D0 candidates (Heavy Flavour)
-DECLARE_SOA_COLUMN(HfPt, hfPt, float);
-DECLARE_SOA_COLUMN(HfEta, hfEta, float);
-DECLARE_SOA_COLUMN(HfPhi, hfPhi, float);
-DECLARE_SOA_COLUMN(HfMass, hfMass, float);
-DECLARE_SOA_COLUMN(HfY, hfY, float);
-DECLARE_SOA_COLUMN(HfPrompt, hfPrompt, bool);
-DECLARE_SOA_COLUMN(HfMatch, hfMatch, bool);
+DECLARE_SOA_COLUMN(HfPt, mcdHfPt, float);
+DECLARE_SOA_COLUMN(HfEta, mcdHfEta, float);
+DECLARE_SOA_COLUMN(HfPhi, mcdHfPhi, float);
+DECLARE_SOA_COLUMN(HfMass, mcdHfMass, float);
+DECLARE_SOA_COLUMN(HfY, mcdHfY, float);
+DECLARE_SOA_COLUMN(HfPrompt, mcdHfPrompt, bool);
+DECLARE_SOA_COLUMN(HfMatch, mcdHfMatch, bool);
 // Other
-DECLARE_SOA_COLUMN(HfMatchedFrom, hfMatchedFrom, int);
-DECLARE_SOA_COLUMN(HfSelectedAs, hfSelectedAs, int);
+DECLARE_SOA_COLUMN(HfMatchedFrom, mcdHfMatchedFrom, int);
+DECLARE_SOA_COLUMN(HfSelectedAs, mcdHfSelectedAs, int);
 // ML scores
-DECLARE_SOA_COLUMN(HfMlScore0, hfMlScore0, float);
-DECLARE_SOA_COLUMN(HfMlScore1, hfMlScore1, float);
-DECLARE_SOA_COLUMN(HfMlScore2, hfMlScore2, float);
+DECLARE_SOA_COLUMN(HfMlScore0, mcdHfMlScore0, float);
+DECLARE_SOA_COLUMN(HfMlScore1, mcdHfMlScore1, float);
+DECLARE_SOA_COLUMN(HfMlScore2, mcdHfMlScore2, float);
 
 } // namespace mcd
 
