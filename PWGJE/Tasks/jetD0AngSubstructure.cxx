@@ -54,156 +54,153 @@ using namespace o2::framework::expressions;
 // Definition of a custom AOD table to store jet–D0 quantities
 namespace o2::aod
 {
-namespace exp
-{
+/*
 // Jet-related quantities
-DECLARE_SOA_COLUMN(JetHfDist, expJetHfDist, float);
-DECLARE_SOA_COLUMN(JetPt, expJetPt, float);
-DECLARE_SOA_COLUMN(JetEta, expJetEta, float);
-DECLARE_SOA_COLUMN(JetPhi, expJetPhi, float);
-DECLARE_SOA_COLUMN(JetNConst, expJetNConst, int);
-DECLARE_SOA_COLUMN(JetAng, expJetAng, float);
+*/
+DECLARE_SOA_COLUMN(expJetHfDist, ExpJetHfDist, float);
+DECLARE_SOA_COLUMN(expJetPt, ExpJetPt, float);
+DECLARE_SOA_COLUMN(expJetEta, ExpJetEta, float);
+DECLARE_SOA_COLUMN(expJetPhi, ExpJetPhi, float);
+DECLARE_SOA_COLUMN(expJetNConst, ExpJetNConst, int);
+DECLARE_SOA_COLUMN(expJetAng, ExpJetAng, float);
 // D0 candidate quantities
-DECLARE_SOA_COLUMN(HfPt, expHfPt, float);
-DECLARE_SOA_COLUMN(HfEta, expHfEta, float);
-DECLARE_SOA_COLUMN(HfPhi, expHfPhi, float);
-DECLARE_SOA_COLUMN(HfMass, expHfMass, float);
-DECLARE_SOA_COLUMN(HfY, expHfY, float);
+DECLARE_SOA_COLUMN(expHfPt, ExpHfPt, float);
+DECLARE_SOA_COLUMN(expHfEta, ExpHfEta, float);
+DECLARE_SOA_COLUMN(expHfPhi, ExpHfPhi, float);
+DECLARE_SOA_COLUMN(expHfMass, ExpHfMass, float);
+DECLARE_SOA_COLUMN(expHfY, ExpHfY, float);
 // ML scores
-DECLARE_SOA_COLUMN(HfMlScore0, expHfMlScore0, float);
-DECLARE_SOA_COLUMN(HfMlScore1, expHfMlScore1, float);
-DECLARE_SOA_COLUMN(HfMlScore2, expHfMlScore2, float);
-} // namespace exp
-namespace mcp
-{
+DECLARE_SOA_COLUMN(expHfMlScore0, ExpHfMlScore0, float);
+DECLARE_SOA_COLUMN(expHfMlScore1, ExpHfMlScore1, float);
+DECLARE_SOA_COLUMN(expHfMlScore2, ExpHfMlScore2, float);
+
+/*
 // MCP quantities (Particle Level)
+*/
 // Jets
-DECLARE_SOA_COLUMN(JetHfDist, mcpJetHfDist, float);
-DECLARE_SOA_COLUMN(JetPt, mcpJetPt, float);
-DECLARE_SOA_COLUMN(JetEta, mcpJetEta, float);
-DECLARE_SOA_COLUMN(JetPhi, mcpJetPhi, float);
-DECLARE_SOA_COLUMN(JetNConst, mcpJetNConst, float);
-DECLARE_SOA_COLUMN(JetAng, mcpJetAng, float);
+DECLARE_SOA_COLUMN(mcpJetHfDist, McpJetHfDist, float);
+DECLARE_SOA_COLUMN(mcpJetPt, McpJetPt, float);
+DECLARE_SOA_COLUMN(mcpJetEta, McpJetEta, float);
+DECLARE_SOA_COLUMN(mcpJetPhi, McpJetPhi, float);
+DECLARE_SOA_COLUMN(mcpJetNConst, McpJetNConst, float);
+DECLARE_SOA_COLUMN(mcpJetAng, McpJetAng, float);
 // D0 candidates (Heavy Flavour)
-DECLARE_SOA_COLUMN(HfPt, mcpHfPt, float);
-DECLARE_SOA_COLUMN(HfEta, mcpHfEta, float);
-DECLARE_SOA_COLUMN(HfPhi, mcpHfPhi, float);
+DECLARE_SOA_COLUMN(mcpHfPt, McpHfPt, float);
+DECLARE_SOA_COLUMN(mcpHfEta, McpHfEta, float);
+DECLARE_SOA_COLUMN(mcpHfPhi, McpHfPhi, float);
 // DECLARE_SOA_COLUMN(HfMass, mcpHfMass, float);
-DECLARE_SOA_COLUMN(HfY, mcpHfY, float);
-DECLARE_SOA_COLUMN(HfPrompt, mcpHfPrompt, bool);
-DECLARE_SOA_COLUMN(HfMatch, mcpHfMatch, bool);
+DECLARE_SOA_COLUMN(mcpHfY, McpHfY, float);
+DECLARE_SOA_COLUMN(mcpHfPrompt, McpHfPrompt, bool);
+DECLARE_SOA_COLUMN(mcpHfMatch, McpHfMatch, bool);
 
-} // namespace mcp
-
-namespace mcd
-{
+/*
 // MCD quantities (Detector Level)
+*/
 // Jets
-DECLARE_SOA_COLUMN(JetHfDist, mcdJetHfDist, float);
-DECLARE_SOA_COLUMN(JetPt, mcdJetPt, float);
-DECLARE_SOA_COLUMN(JetEta, mcdJetEta, float);
-DECLARE_SOA_COLUMN(JetPhi, mcdJetPhi, float);
-DECLARE_SOA_COLUMN(JetNConst, mcdJetNConst, float);
-DECLARE_SOA_COLUMN(JetAng, mcdJetAng, float);
+DECLARE_SOA_COLUMN(mcdJetHfDist, McdJetHfDist, float);
+DECLARE_SOA_COLUMN(mcdJetPt, McdJetPt, float);
+DECLARE_SOA_COLUMN(mcdJetEta, McdJetEta, float);
+DECLARE_SOA_COLUMN(mcdJetPhi, McdJetPhi, float);
+DECLARE_SOA_COLUMN(mcdJetNConst, McdJetNConst, float);
+DECLARE_SOA_COLUMN(mcdJetAng, McdJetAng, float);
 // D0 candidates (Heavy Flavour)
-DECLARE_SOA_COLUMN(HfPt, mcdHfPt, float);
-DECLARE_SOA_COLUMN(HfEta, mcdHfEta, float);
-DECLARE_SOA_COLUMN(HfPhi, mcdHfPhi, float);
-DECLARE_SOA_COLUMN(HfMass, mcdHfMass, float);
-DECLARE_SOA_COLUMN(HfY, mcdHfY, float);
-DECLARE_SOA_COLUMN(HfPrompt, mcdHfPrompt, bool);
-DECLARE_SOA_COLUMN(HfMatch, mcdHfMatch, bool);
+DECLARE_SOA_COLUMN(mcdHfPt, McdHfPt, float);
+DECLARE_SOA_COLUMN(mcdHfEta, McdHfEta, float);
+DECLARE_SOA_COLUMN(mcdHfPhi, McdHfPhi, float);
+DECLARE_SOA_COLUMN(mcdHfMass, McdHfMass, float);
+DECLARE_SOA_COLUMN(mcdHfY, McdHfY, float);
+DECLARE_SOA_COLUMN(mcdHfPrompt, McdHfPrompt, bool);
+DECLARE_SOA_COLUMN(mcdHfMatch, McdHfMatch, bool);
 // Other
-DECLARE_SOA_COLUMN(HfMatchedFrom, mcdHfMatchedFrom, int);
-DECLARE_SOA_COLUMN(HfSelectedAs, mcdHfSelectedAs, int);
+DECLARE_SOA_COLUMN(mcdHfMatchedFrom, McdHfMatchedFrom, int);
+DECLARE_SOA_COLUMN(mcdHfSelectedAs, McdHfSelectedAs, int);
 // ML scores
-DECLARE_SOA_COLUMN(HfMlScore0, mcdHfMlScore0, float);
-DECLARE_SOA_COLUMN(HfMlScore1, mcdHfMlScore1, float);
-DECLARE_SOA_COLUMN(HfMlScore2, mcdHfMlScore2, float);
+DECLARE_SOA_COLUMN(mcdHfMlScore0, McdHfMlScore0, float);
+DECLARE_SOA_COLUMN(mcdHfMlScore1, McdHfMlScore1, float);
+DECLARE_SOA_COLUMN(mcdHfMlScore2, McdHfMlScore2, float);
 
-} // namespace mcd
-
+/*
 // AOD table definition
+*/
 DECLARE_SOA_TABLE(EXPJetObjTable, "AOD", "EXPJETOBJTABLE",
-                  exp::JetHfDist,
-                  exp::JetPt,
-                  exp::JetEta,
-                  exp::JetPhi,
-                  exp::JetNConst,
-                  exp::JetAng,
-                  exp::HfPt,
-                  exp::HfEta,
-                  exp::HfPhi,
-                  exp::HfMass,
-                  exp::HfY,
-                  exp::HfMlScore0,
-                  exp::HfMlScore1,
-                  exp::HfMlScore2);
+                  expJetHfDist,
+                  expJetPt,
+                  expJetEta,
+                  expJetPhi,
+                  expJetNConst,
+                  expJetAng,
+                  expHfPt,
+                  expHfEta,
+                  expHfPhi,
+                  expHfMass,
+                  expHfY,
+                  expHfMlScore0,
+                  expHfMlScore1,
+                  expHfMlScore2);
 
 DECLARE_SOA_TABLE(MCPJetObjTable, "AOD", "MCPJETOBJTABLE",
-                  mcp::JetHfDist,
-                  mcp::JetPt,
-                  mcp::JetEta,
-                  mcp::JetPhi,
-                  mcp::JetNConst,
-                  mcp::JetAng,
-                  mcp::HfPt,
-                  mcp::HfEta,
-                  mcp::HfPhi,
-                  // mcp::HfMass,
-                  mcp::HfY,
-                  mcp::HfPrompt,
-                  mcp::HfMatch);
+                  mcpJetHfDist,
+                  mcpJetPt,
+                  mcpJetEta,
+                  mcpJetPhi,
+                  mcpJetNConst,
+                  mcpJetAng,
+                  mcpHfPt,
+                  mcpHfEta,
+                  mcpHfPhi,
+                  mcpHfY,
+                  mcpHfPrompt,
+                  mcpHfMatch);
 
 DECLARE_SOA_TABLE(MCDJetObjTable, "AOD", "MCDJETOBJTABLE",
-                  mcd::JetHfDist,
-                  mcd::JetPt,
-                  mcd::JetEta,
-                  mcd::JetPhi,
-                  mcd::JetNConst,
-                  mcd::JetAng,
-                  mcd::HfPt,
-                  mcd::HfEta,
-                  mcd::HfPhi,
-                  mcd::HfMass,
-                  mcd::HfY,
-                  mcd::HfPrompt,
-                  mcd::HfMatch,
-                  mcd::HfMlScore0,
-                  mcd::HfMlScore1,
-                  mcd::HfMlScore2,
-                  mcd::HfMatchedFrom,
-                  mcd::HfSelectedAs);
+                  mcdJetHfDist,
+                  mcdJetPt,
+                  mcdJetEta,
+                  mcdJetPhi,
+                  mcdJetNConst,
+                  mcdJetAng,
+                  mcdHfPt,
+                  mcdHfEta,
+                  mcdHfPhi,
+                  mcdHfMass,
+                  mcdHfY,
+                  mcdHfPrompt,
+                  mcdHfMatch,
+                  mcdHfMlScore0,
+                  mcdHfMlScore1,
+                  mcdHfMlScore2,
+                  mcdHfMatchedFrom,
+                  mcdHfSelectedAs);
 
 DECLARE_SOA_TABLE(MatchJetDistanceTable, "AOD", "MATCHTABLE",
-                  mcp::JetHfDist,
-                  mcp::JetPt,
-                  mcp::JetEta,
-                  mcp::JetPhi,
-                  mcp::JetNConst,
-                  mcp::JetAng,
-                  mcp::HfPt,
-                  mcp::HfEta,
-                  mcp::HfPhi,
-                  mcp::HfY,
-                  mcp::HfPrompt,
-                  mcd::JetHfDist,
-                  mcd::JetPt,
-                  mcd::JetEta,
-                  mcd::JetPhi,
-                  mcd::JetNConst,
-                  mcd::JetAng,
-                  mcd::HfPt,
-                  mcd::HfEta,
-                  mcd::HfPhi,
-                  mcd::HfMass,
-                  mcd::HfY,
-                  mcd::HfPrompt,
-                  mcd::HfMlScore0,
-                  mcd::HfMlScore1,
-                  mcd::HfMlScore2,
-                  mcd::HfMatchedFrom,
-                  mcd::HfSelectedAs);
+                  mcpJetHfDist,
+                  mcpJetPt,
+                  mcpJetEta,
+                  mcpJetPhi,
+                  mcpJetNConst,
+                  mcpJetAng,
+                  mcpHfPt,
+                  mcpHfEta,
+                  mcpHfPhi,
+                  mcpHfY,
+                  mcpHfPrompt,
+                  mcdJetHfDist,
+                  mcdJetPt,
+                  mcdJetEta,
+                  mcdJetPhi,
+                  mcdJetNConst,
+                  mcdJetAng,
+                  mcdHfPt,
+                  mcdHfEta,
+                  mcdHfPhi,
+                  mcdHfMass,
+                  mcdHfY,
+                  mcdHfPrompt,
+                  mcdHfMlScore0,
+                  mcdHfMlScore1,
+                  mcdHfMlScore2,
+                  mcdHfMatchedFrom,
+                  mcdHfSelectedAs);
 
 } // namespace o2::aod
 
