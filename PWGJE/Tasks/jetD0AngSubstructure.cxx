@@ -243,14 +243,14 @@ HNAME(mc_eff_det_hfl_pt);   // Detector level HF candidate pT
 HNAME(mc_eff_det_hfl_mass); // Detector level HF candidate mass
 HNAME(mc_eff_det_hfl_eta);  // Detector level HF candidate eta
 HNAME(mc_eff_det_hfl_phi);  // Detector level HF candidate phi
-// HNAME(mc_eff_par_jet_pt);   // Particle level jet pT
-// HNAME(mc_eff_par_jet_eta);  // Particle level jet eta
-// HNAME(mc_eff_par_jet_phi);  // Particle level jet phi
-// HNAME(mc_eff_par_jet_ang);  // Particle level jet angularity
-// HNAME(mc_eff_par_hfl_pt);   // Particle level HF candidate pT
+HNAME(mc_eff_par_jet_pt);   // Particle level jet pT
+HNAME(mc_eff_par_jet_eta);  // Particle level jet eta
+HNAME(mc_eff_par_jet_phi);  // Particle level jet phi
+HNAME(mc_eff_par_jet_ang);  // Particle level jet angularity
+HNAME(mc_eff_par_hfl_pt);   // Particle level HF candidate pT
 // HNAME(mc_eff_par_hfl_mass); // Particle level HF candidate mass -> PDG value
-// HNAME(mc_eff_par_hfl_eta); // Particle level HF candidate eta
-// HNAME(mc_eff_par_hfl_phi); // Particle level HF candidate phi
+HNAME(mc_eff_par_hfl_eta); // Particle level HF candidate eta
+HNAME(mc_eff_par_hfl_phi); // Particle level HF candidate phi
 /*
 // Monte Carlo Data Matching (analyseMonteCarlo)
 */
@@ -602,6 +602,15 @@ struct JetD0AngSubstructure {
           }
 
           float angularity = jetCalculateAngularityMCD(mcdjet, tracks);
+          registry.fill(HIST(histnames::mc_eff_det_jet_pt), mcdjet.pt());
+          registry.fill(HIST(histnames::mc_eff_det_jet_eta), mcdjet.eta());
+          registry.fill(HIST(histnames::mc_eff_det_jet_phi), mcdjet.phi());
+          registry.fill(HIST(histnames::mc_eff_det_jet_ang), angularity);
+          // Particle Histgrams
+          registry.fill(HIST(histnames::mc_eff_det_hfl_pt), mcdd0cand.pt());
+          registry.fill(HIST(histnames::mc_eff_det_hfl_mass), mcdd0cand.m());
+          registry.fill(HIST(histnames::mc_eff_det_hfl_eta), mcdd0cand.eta());
+          registry.fill(HIST(histnames::mc_eff_det_hfl_phi), mcdd0cand.phi());
 
           mcdJetTable(jetutilities::deltaR(mcdjet, mcdd0cand),
                       mcdjet.pt(),
@@ -636,6 +645,16 @@ struct JetD0AngSubstructure {
           registry.fill(HIST(histnames::mc_eff_jet), get_val_from_bin(BIN_MC_JETCNTR::ParticleLevelJetWithMatchedCandidate));
         }
         float angularity = jetCalculateAngularityMCP(mcpjet, particles);
+
+        registry.fill(HIST(histnames::mc_eff_par_jet_pt), mcpjet.pt());
+        registry.fill(HIST(histnames::mc_eff_par_jet_eta), mcpjet.eta());
+        registry.fill(HIST(histnames::mc_eff_par_jet_phi), mcpjet.phi());
+        registry.fill(HIST(histnames::mc_eff_par_jet_ang), angularity);
+        // Particle Histgrams
+        registry.fill(HIST(histnames::mc_eff_par_hfl_pt), mcpd0cand.pt());
+
+        registry.fill(HIST(histnames::mc_eff_par_hfl_eta), mcpd0cand.eta());
+        registry.fill(HIST(histnames::mc_eff_par_hfl_phi), mcpd0cand.phi());
         // store data in MC detector level table (calculate angular distance in eta-phi plane on the fly)
         mcpJetTable(jetutilities::deltaR(mcpjet, mcpd0cand),
                     mcpjet.pt(),
