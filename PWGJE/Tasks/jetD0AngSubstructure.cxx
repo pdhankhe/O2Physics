@@ -321,7 +321,7 @@ struct JetD0AngSubstructure {
   Preslice<JetD0MCDTable> d0MCDJetsPerEXPCollisionPreslice = aod::jet::collisionId;
   Preslice<JetD0MCPTable> d0MCPJetsPerMCCollisionPreslice = aod::jet::mcCollisionId;
 
-  HistogramRegistry registryD0{"registryD0", {}};
+  HistogramRegistry registry{"registry", {}};
 
   // Configurables
   Configurable<float> vertexZCut{"vertexZCut", 10.0f, "Accepted z-vertex range"};
@@ -350,48 +350,48 @@ struct JetD0AngSubstructure {
     // Experimental Data Histograms
     */
     // Definitions
-    registryD0.add(histnames::ex_col, "N_{coll};", {HistType::kTH1F, {{2, 0., 2.}}});
-    registryD0.add(histnames::ex_jet, "N_{jet};", {HistType::kTH1F, {{1, 0., 1.0}}});
-    registryD0.add(histnames::ex_jet_pt, ";p_{T,jet};dN/dp_{T,jet}", {HistType::kTH1F, {{1000, 0., 50.}}});
-    registryD0.add(histnames::ex_jet_eta, ";#eta_{jet};dN/d#eta_{jet}", {HistType::kTH1F, {{250, -5., 5.}}});
-    registryD0.add(histnames::ex_jet_phi, ";#phi_{jet};dN/d#phi_{jet}", {HistType::kTH1F, {{250, -10., 10.}}});
-    registryD0.add(histnames::ex_jet_ang, ";angularity_{jet};dN/d(angularity)", {HistType::kTH1F, {{1000, 0., 10.}}});
-    registryD0.add(histnames::ex_jet_dist, ";#DeltaR_{D^{0},jet};dN/d(#DeltaR)", {HistType::kTH1F, {{1000, 0., 10.}}});
-    registryD0.add(histnames::ex_jet_dist_proj, ";#DeltaR_{D^{0},jet};z^{D^{0},jet}_{||}", {HistType::kTH2F, {{1000, 0., 10.}, {1000, 0., 10.}}});
-    registryD0.add(histnames::ex_jet_proj, ";z^{D^{0},jet}_{||};dN/dz^{D^{0},jet}_{||}", {HistType::kTH1F, {{1000, 0., 10.}}});
-    registryD0.add(histnames::ex_hfl_pt, ";p_{T,D^{0}};dN/dp_{T,D^{0}}", {HistType::kTH1F, {{200, 0., 10.}}});
-    registryD0.add(histnames::ex_hfl_mass, ";m_{D^{0}};dN/dm_{D^{0}}", {HistType::kTH1F, {{1000, 0., 10.}}});
-    registryD0.add(histnames::ex_hfl_eta, ";#eta_{D^{0}};dN/d#eta_{D^{0}}", {HistType::kTH1F, {{250, -5., 5.}}});
-    registryD0.add(histnames::ex_hfl_phi, ";#phi_{D^{0}};dN/d#phi_{D^{0}}", {HistType::kTH1F, {{250, -10., 10.}}});
+    registry.add(histnames::ex_col, "N_{coll};", {HistType::kTH1F, {{2, 0., 2.}}});
+    registry.add(histnames::ex_jet, "N_{jet};", {HistType::kTH1F, {{1, 0., 1.0}}});
+    registry.add(histnames::ex_jet_pt, ";p_{T,jet};dN/dp_{T,jet}", {HistType::kTH1F, {{1000, 0., 50.}}});
+    registry.add(histnames::ex_jet_eta, ";#eta_{jet};dN/d#eta_{jet}", {HistType::kTH1F, {{250, -5., 5.}}});
+    registry.add(histnames::ex_jet_phi, ";#phi_{jet};dN/d#phi_{jet}", {HistType::kTH1F, {{250, -10., 10.}}});
+    registry.add(histnames::ex_jet_ang, ";angularity_{jet};dN/d(angularity)", {HistType::kTH1F, {{1000, 0., 10.}}});
+    registry.add(histnames::ex_jet_dist, ";#DeltaR_{D^{0},jet};dN/d(#DeltaR)", {HistType::kTH1F, {{1000, 0., 10.}}});
+    registry.add(histnames::ex_jet_dist_proj, ";#DeltaR_{D^{0},jet};z^{D^{0},jet}_{||}", {HistType::kTH2F, {{1000, 0., 10.}, {1000, 0., 10.}}});
+    registry.add(histnames::ex_jet_proj, ";z^{D^{0},jet}_{||};dN/dz^{D^{0},jet}_{||}", {HistType::kTH1F, {{1000, 0., 10.}}});
+    registry.add(histnames::ex_hfl_pt, ";p_{T,D^{0}};dN/dp_{T,D^{0}}", {HistType::kTH1F, {{200, 0., 10.}}});
+    registry.add(histnames::ex_hfl_mass, ";m_{D^{0}};dN/dm_{D^{0}}", {HistType::kTH1F, {{1000, 0., 10.}}});
+    registry.add(histnames::ex_hfl_eta, ";#eta_{D^{0}};dN/d#eta_{D^{0}}", {HistType::kTH1F, {{250, -5., 5.}}});
+    registry.add(histnames::ex_hfl_phi, ";#phi_{D^{0}};dN/d#phi_{D^{0}}", {HistType::kTH1F, {{250, -10., 10.}}});
     // Labels
-    auto expCollisionCounter = registryD0.get<TH1>(HIST(histnames::ex_col));
+    auto expCollisionCounter = registry.get<TH1>(HIST(histnames::ex_col));
     expCollisionCounter->GetXaxis()->SetBinLabel(BIN_EX_COLCNTR::AllCollisions, "all");
     expCollisionCounter->GetXaxis()->SetBinLabel(BIN_EX_COLCNTR::Sel8ZCut, "sel8 + zcut");
 
-    auto expJetCounter = registryD0.get<TH1>(HIST(histnames::ex_jet));
+    auto expJetCounter = registry.get<TH1>(HIST(histnames::ex_jet));
     expJetCounter->GetXaxis()->SetBinLabel(BIN_EX_JETCNTR::ChargedJets, "Charged jets with D0");
     /*
     // Monte Carlo Data Efficiency Histograms
     */
     // Definitions
-    registryD0.add(histnames::mc_eff_col, "N_{coll};", {HistType::kTH1F, {{4, 0., 4.0}}});
-    registryD0.add(histnames::mc_eff_jet, "N_{jet};", {HistType::kTH1F, {{4, 0., 4.0}}});
-    registryD0.add(histnames::mc_eff_det_jet_pt, ";p_{T,det jet};dN/dp_{T,det jet}", {HistType::kTH1F, {{1000, 0., 50.}}});
-    registryD0.add(histnames::mc_eff_det_jet_eta, ";#eta_{det jet};dN/d#eta_{det jet}", {HistType::kTH1F, {{250, -5., 5.}}});
-    registryD0.add(histnames::mc_eff_det_jet_phi, ";#phi_{det jet};dN/d#phi_{det jet}", {HistType::kTH1F, {{250, -10., 10.}}});
-    registryD0.add(histnames::mc_eff_det_jet_ang, ";angularity_{det jet};dN/d(angularity)", {HistType::kTH1F, {{1000, 0., 10.}}});
-    registryD0.add(histnames::mc_eff_det_hfl_pt, ";p_{T,det D^{0}};dN/dp_{T,det D^{0}}", {HistType::kTH1F, {{200, 0., 10.}}});
-    registryD0.add(histnames::mc_eff_det_hfl_mass, ";m_{det D^{0}};dN/dm_{det D^{0}}", {HistType::kTH1F, {{1000, 0., 10.}}});
-    registryD0.add(histnames::mc_eff_det_hfl_eta, ";#eta_{det D^{0}};dN/d#eta_{det D^{0}}", {HistType::kTH1F, {{250, -5., 5.}}});
-    registryD0.add(histnames::mc_eff_det_hfl_phi, ";#phi_{det D^{0}};dN/d#phi_{det D^{0}}", {HistType::kTH1F, {{250, -10., 10.}}});
+    registry.add(histnames::mc_eff_col, "N_{coll};", {HistType::kTH1F, {{4, 0., 4.0}}});
+    registry.add(histnames::mc_eff_jet, "N_{jet};", {HistType::kTH1F, {{4, 0., 4.0}}});
+    registry.add(histnames::mc_eff_det_jet_pt, ";p_{T,det jet};dN/dp_{T,det jet}", {HistType::kTH1F, {{1000, 0., 50.}}});
+    registry.add(histnames::mc_eff_det_jet_eta, ";#eta_{det jet};dN/d#eta_{det jet}", {HistType::kTH1F, {{250, -5., 5.}}});
+    registry.add(histnames::mc_eff_det_jet_phi, ";#phi_{det jet};dN/d#phi_{det jet}", {HistType::kTH1F, {{250, -10., 10.}}});
+    registry.add(histnames::mc_eff_det_jet_ang, ";angularity_{det jet};dN/d(angularity)", {HistType::kTH1F, {{1000, 0., 10.}}});
+    registry.add(histnames::mc_eff_det_hfl_pt, ";p_{T,det D^{0}};dN/dp_{T,det D^{0}}", {HistType::kTH1F, {{200, 0., 10.}}});
+    registry.add(histnames::mc_eff_det_hfl_mass, ";m_{det D^{0}};dN/dm_{det D^{0}}", {HistType::kTH1F, {{1000, 0., 10.}}});
+    registry.add(histnames::mc_eff_det_hfl_eta, ";#eta_{det D^{0}};dN/d#eta_{det D^{0}}", {HistType::kTH1F, {{250, -5., 5.}}});
+    registry.add(histnames::mc_eff_det_hfl_phi, ";#phi_{det D^{0}};dN/d#phi_{det D^{0}}", {HistType::kTH1F, {{250, -10., 10.}}});
     // Labels
-    auto mcCollisionCounter = registryD0.get<TH1>(HIST(histnames::mc_eff_col));
+    auto mcCollisionCounter = registry.get<TH1>(HIST(histnames::mc_eff_col));
     mcCollisionCounter->GetXaxis()->SetBinLabel(BIN_MC_COLCNTR::All, "mccollisions");
     mcCollisionCounter->GetXaxis()->SetBinLabel(BIN_MC_COLCNTR::ZCut, "z_cut");
     mcCollisionCounter->GetXaxis()->SetBinLabel(BIN_MC_COLCNTR::Matched, "collisions");
     mcCollisionCounter->GetXaxis()->SetBinLabel(BIN_MC_COLCNTR::MatchedSel8ZCut, "sel8");
 
-    auto jetCounter = registryD0.get<TH1>(HIST(histnames::mc_eff_jet));
+    auto jetCounter = registry.get<TH1>(HIST(histnames::mc_eff_jet));
     jetCounter->GetXaxis()->SetBinLabel(BIN_MC_JETCNTR::ParticleLevelJetInMCCollision, "particle level");
     jetCounter->GetXaxis()->SetBinLabel(BIN_MC_JETCNTR::DetectorLevelJetInMCCollision, "detector level");
     jetCounter->GetXaxis()->SetBinLabel(BIN_MC_JETCNTR::DetectorLevelJetWithMatchedCandidate, "particle matched jets");
@@ -399,24 +399,24 @@ struct JetD0AngSubstructure {
     /*
     // Monte Carlo Data Histograms
     */
-    registryD0.add(histnames::mc_col, "N_{coll};", {HistType::kTH1F, {{4, 0., 4.0}}});
-    registryD0.add(histnames::mc_jet, "N_{jet};", {HistType::kTH1F, {{4, 0., 4.0}}});
-    registryD0.add(histnames::mc_det_jet_pt, ";p_{T,det jet};dN/dp_{T,det jet}", {HistType::kTH1F, {{1000, 0., 50.}}});
-    registryD0.add(histnames::mc_det_jet_eta, ";#eta_{det jet};dN/d#eta_{det jet}", {HistType::kTH1F, {{250, -5., 5.}}});
-    registryD0.add(histnames::mc_det_jet_phi, ";#phi_{det jet};dN/d#phi_{det jet}", {HistType::kTH1F, {{250, -10., 10.}}});
-    registryD0.add(histnames::mc_det_jet_ang, ";angularity_{det jet};dN/d(angularity)", {HistType::kTH1F, {{1000, 0., 10.}}});
-    registryD0.add(histnames::mc_det_hfl_pt, ";p_{T,det D^{0}};dN/dp_{T,det D^{0}}", {HistType::kTH1F, {{200, 0., 10.}}});
-    registryD0.add(histnames::mc_det_hfl_mass, ";m_{det D^{0}};dN/dm_{det D^{0}}", {HistType::kTH1F, {{1000, 0., 10.}}});
-    registryD0.add(histnames::mc_det_hfl_eta, ";#eta_{det D^{0}};dN/d#eta_{det D^{0}}", {HistType::kTH1F, {{250, -5., 5.}}});
-    registryD0.add(histnames::mc_det_hfl_phi, ";#phi_{det D^{0}};dN/d#phi_{det D^{0}}", {HistType::kTH1F, {{250, -10., 10.}}});
+    registry.add(histnames::mc_col, "N_{coll};", {HistType::kTH1F, {{4, 0., 4.0}}});
+    registry.add(histnames::mc_jet, "N_{jet};", {HistType::kTH1F, {{4, 0., 4.0}}});
+    registry.add(histnames::mc_det_jet_pt, ";p_{T,det jet};dN/dp_{T,det jet}", {HistType::kTH1F, {{1000, 0., 50.}}});
+    registry.add(histnames::mc_det_jet_eta, ";#eta_{det jet};dN/d#eta_{det jet}", {HistType::kTH1F, {{250, -5., 5.}}});
+    registry.add(histnames::mc_det_jet_phi, ";#phi_{det jet};dN/d#phi_{det jet}", {HistType::kTH1F, {{250, -10., 10.}}});
+    registry.add(histnames::mc_det_jet_ang, ";angularity_{det jet};dN/d(angularity)", {HistType::kTH1F, {{1000, 0., 10.}}});
+    registry.add(histnames::mc_det_hfl_pt, ";p_{T,det D^{0}};dN/dp_{T,det D^{0}}", {HistType::kTH1F, {{200, 0., 10.}}});
+    registry.add(histnames::mc_det_hfl_mass, ";m_{det D^{0}};dN/dm_{det D^{0}}", {HistType::kTH1F, {{1000, 0., 10.}}});
+    registry.add(histnames::mc_det_hfl_eta, ";#eta_{det D^{0}};dN/d#eta_{det D^{0}}", {HistType::kTH1F, {{250, -5., 5.}}});
+    registry.add(histnames::mc_det_hfl_phi, ";#phi_{det D^{0}};dN/d#phi_{det D^{0}}", {HistType::kTH1F, {{250, -10., 10.}}});
     // Labels
-    auto mcCollisionCounter2 = registryD0.get<TH1>(HIST(histnames::mc_col));
+    auto mcCollisionCounter2 = registry.get<TH1>(HIST(histnames::mc_col));
     mcCollisionCounter2->GetXaxis()->SetBinLabel(BIN_MC_COLCNTR::All, "mccollisions");
     mcCollisionCounter2->GetXaxis()->SetBinLabel(BIN_MC_COLCNTR::ZCut, "z_cut");
     mcCollisionCounter2->GetXaxis()->SetBinLabel(BIN_MC_COLCNTR::Matched, "collisions");
     mcCollisionCounter2->GetXaxis()->SetBinLabel(BIN_MC_COLCNTR::MatchedSel8ZCut, "sel8");
 
-    auto jetCounter2 = registryD0.get<TH1>(HIST(histnames::mc_jet));
+    auto jetCounter2 = registry.get<TH1>(HIST(histnames::mc_jet));
     jetCounter2->GetXaxis()->SetBinLabel(BIN_MC_JETCNTR::DetectorLevelJetInMCCollision, "detector level");
     jetCounter2->GetXaxis()->SetBinLabel(BIN_MC_JETCNTR::ParticleLevelJetInMCCollision, "particle level");
     jetCounter2->GetXaxis()->SetBinLabel(BIN_MC_JETCNTR::DetectorLevelJetWithMatchedCandidate, "particle matched jets");
@@ -466,8 +466,7 @@ struct JetD0AngSubstructure {
   void analyseDataChargedSubstructure(aod::JetCollision const& collision,
                                       JetChargedTable const& jets,
                                       CandidatesTable const& /*candidates*/,
-                                      aod::JetTracks const& tracks,
-                                      HistogramRegistry& registry)
+                                      aod::JetTracks const& tracks)
   {
     // apply event selection and fill histograms for sanity check
     registry.fill(HIST(histnames::ex_col), getValFromBin(BIN_EX_COLCNTR::AllCollisions));
@@ -547,8 +546,7 @@ struct JetD0AngSubstructure {
                                    CandidatesMCD const& /*mcdCandidates*/,
                                    CandidatesMCP const& /*mcpCandidates*/,
                                    aod::JetTracks const& tracks,
-                                   aod::JetParticles const& particles,
-                                   HistogramRegistry& registry)
+                                   aod::JetParticles const& particles)
   {
     for (const auto& mccollision : mccollisions) {
 
@@ -684,8 +682,7 @@ struct JetD0AngSubstructure {
                          CandidatesMCD const& /*mcdCandidates*/,
                          CandidatesMCP const& /*mcpCandidates*/,
                          aod::JetTracks const& jettracks,
-                         aod::JetParticles const& jetparticles,
-                         HistogramRegistry& registry)
+                         aod::JetParticles const& jetparticles)
   {
     for (const auto& mccollision : mccollisions) {
       registry.fill(HIST(histnames::mc_col), getValFromBin(BIN_MC_COLCNTR::All));
@@ -827,7 +824,7 @@ struct JetD0AngSubstructure {
                                        aod::CandidatesD0Data const& candidates,
                                        aod::JetTracks const& tracks)
   {
-    analyseDataChargedSubstructure<JetChargedTableD0, aod::CandidatesD0Data>(collision, jets, candidates, tracks, registryD0);
+    analyseDataChargedSubstructure<JetChargedTableD0, aod::CandidatesD0Data>(collision, jets, candidates, tracks);
   }
 
   PROCESS_SWITCH(JetD0AngSubstructure, processataChargedSubstructureD0, "charged HF jet substructure", false);
@@ -848,7 +845,7 @@ struct JetD0AngSubstructure {
                                 aod::CandidatesD0MCD,
                                 aod::CandidatesD0MCP>(
       d0MCDJetsPerEXPCollisionPreslice, d0MCPJetsPerMCCollisionPreslice, mccollisions, collisions, mcdjets,
-      mcpjets, mcdCandidates, mcpCandidates, jettracks, jetparticles, registryD0);
+      mcpjets, mcdCandidates, mcpCandidates, jettracks, jetparticles);
   }
 
   PROCESS_SWITCH(JetD0AngSubstructure, processMonteCarloEfficiencyD0, "non-matched and matched MC D0 and jets", false);
@@ -868,7 +865,7 @@ struct JetD0AngSubstructure {
                       aod::CandidatesD0MCD,
                       aod::CandidatesD0MCP>(
       d0MCPJetsPerMCCollisionPreslice, mccollisions, collisions, mcdjets,
-      mcpjets, mcdCandidates, mcpCandidates, jettracks, jetparticles, registryD0);
+      mcpjets, mcdCandidates, mcpCandidates, jettracks, jetparticles);
   }
 
   PROCESS_SWITCH(JetD0AngSubstructure, processMonteCarloD0, "Store all simulated D0 jets information with matched candidate (if any found)", false);
